@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('image');
             $table->decimal('price', 8, 2);
             $table->integer('inventory')->default(0);
-            $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('brand_id')->constrained('brands');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
