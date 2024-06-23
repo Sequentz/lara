@@ -71,6 +71,19 @@ Route::middleware([
     Route::get('/orders', [OrderController::class, 'index'])->name(('orders'));
 
     // CATEGORIES
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+
+    // VIEW CATEGORY
+    Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+    // ADD CATEGORY
+    Route::get('/categories/add', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/add', [CategoryController::class, 'store'])->name('categories.store');
+
+    // EDIT CATEGORY
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+
+    // DELETE CATEGORY
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 });
