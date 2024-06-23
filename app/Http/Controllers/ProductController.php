@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -27,7 +28,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('addproduct', compact('categories'));
+        $brands = Brand::all();
+        return view('addproduct', compact('categories', 'brands'));
     }
 
     /**

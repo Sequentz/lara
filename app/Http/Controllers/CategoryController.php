@@ -38,10 +38,8 @@ class CategoryController extends Controller
             $validated['img'] = $imagePath;
         }
 
-        // Create the category
         $category = Category::create($validated);
 
-        // Return the created category as a JSON response
         return response()->json($category);
     }
 

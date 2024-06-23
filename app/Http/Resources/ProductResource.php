@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class ProductResource extends JsonResource
 {
@@ -19,6 +20,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'product' => $this->product,
             'description' => $this->description,
+            'image' => URL::to('/storage/' . $this->photo),
             'price' => $this->price,
         ];
     }
