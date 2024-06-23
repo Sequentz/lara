@@ -32,4 +32,23 @@ class StoreProductRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'product.required' => 'The product name is required.',
+            'brand_id.required' => 'The brand field is required.',
+            'brand_id.exists' => 'The selected brand is invalid.',
+            'category_id.required' => 'The category field is required.',
+            'category_id.exists' => 'The selected category is invalid.',
+            'image.image' => 'The file must be an image.',
+            'image.max' => 'The image may not be greater than 2MB.',
+            'description.required' => 'The description is required.',
+            'description.max' => 'The description may not be greater than 255 characters.',
+            'price.required' => 'The price is required.',
+            'price.numeric' => 'The price must be a number.',
+            'price.min' => 'The price must be at least 0.',
+
+        ];
+    }
 }

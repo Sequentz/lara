@@ -12,11 +12,13 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('id', 'ID') <span class="inline-block ml-1">⬍</span></th>
                     <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('product', 'Product') <span class="inline-block ml-1">⬍</span></th>
-                    <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('category.category', 'Category Name') <span class="inline-block ml-1">⬍</span></th>
+                    <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('brand.name', 'Brand') <span class="inline-block ml-1">⬍</span></th>
+                    <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('category.name', 'Category') <span class="inline-block ml-1">⬍</span></th>
                     <th class="px-6 py-3 text-left text-sm font-medium">Description</th>
                     <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('price', 'Price') <span class="inline-block ml-1">⬍</span></th>
                     <th class="px-6 py-3 text-left text-sm font-medium">Edit</th>
                     <th class="px-6 py-3 text-left text-sm font-medium">Delete</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium">View</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -25,7 +27,8 @@
                 <tr class="hover:bg-gray-100">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->product }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->category->category ?? 'No Category' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->brand->name ?? 'No Brand' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $product->category->name ?? 'No Category' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {{ \Illuminate\Support\Str::limit($product->description, 30, '...') }}
                     </td>
@@ -35,6 +38,9 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         <a href="{{ route('products.destroy', $product->id) }}" class="text-red-500 hover:text-red-700">🗑️</a>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <a href="{{ route('products.show', $product->id) }}">👁️</a>
                     </td>
                 </tr>
                 @endforeach

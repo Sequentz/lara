@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         Product::create($validated);
 
-        return redirect()->route('products.create')->with('success', 'Product created successfully!');
+        return redirect()->route('products')->with('success', 'Product created successfully!');
     }
 
     /**
@@ -54,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('showproduct', compact('product'));
     }
 
     /**
@@ -62,28 +62,30 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('editproduct', compact('product', 'brands', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    // public function update(UpdateProductRequest $request, Product $product)
-    // {
-    //     $validated = $request->validated();
+    public function update(UpdateProductRequest $request, Product $product)
+    {
+        $validated = $request->validated();
 
-    //     if ($request->hasFile('image')) {
-    //         if ($product->image) {
-    //             Storage::disk('public')->delete($product->image);
-    //         }
-    //         $imagePath = $request->file('image')->store('products', 'public');
-    //         $validated['image'] = $imagePath;
-    //     }
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $imagePath = $request->file('image')->store('products', 'public');
+            $validated['image'] = $imagePath;
+        }
 
-    //     $product->update($validated);
+        $product->update($validated);
 
-    //     return redirect()->route('products.edit', $product)->with('success', 'Product updated successfully!');
-    // }
+        return redirect()->route('products', $product)->with('success', 'Product updated successfully!');
+    }
     /**
      * Remove the specified resource from storage.
      */
