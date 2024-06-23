@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
 
         foreach (range(1, 50) as $index) {
             DB::table('products')->insert([
-                'name' => $faker->word,
+                'product' => $faker->word,
                 'description' => $faker->sentence,
                 'image' => 'products/default.jpg', // Use a default image for simplicity
                 'price' => $faker->randomFloat(2, 10, 1000),
