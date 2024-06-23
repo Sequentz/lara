@@ -48,7 +48,7 @@ Route::middleware([
 
 
     // BRANDS
-    Route::get('/brands', [BrandController::class, 'index'])->name(('brands.index'));
+    Route::get('/brands', [BrandController::class, 'index'])->name(('brands'));
 
     // ADD BRAND
     Route::get('/brands/add', [BrandController::class, 'create'])->name(('brands.create'));
