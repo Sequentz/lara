@@ -29,7 +29,7 @@ class BrandApiController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return new BrandResource($brand);
     }
 
     /**
@@ -46,5 +46,19 @@ class BrandApiController extends Controller
     public function destroy(Brand $brand)
     {
         //
+    }
+
+
+    public function getProductsByBrand($name)
+    {
+        $brand = Brand::where('name', $name)->first();
+
+        if (!$brand) {
+            return response()->json(['message' => 'Brand not found'], 404);
+        }
+
+        $products = $brand->products;
+
+        return response()->json($products, 200);
     }
 }
