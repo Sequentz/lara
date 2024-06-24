@@ -21,4 +21,3 @@ export default {
 
     plugins: [forms, typography],
 };
-enabled: process.env.NODE_ENV === "production";
