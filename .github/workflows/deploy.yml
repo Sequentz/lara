@@ -1,0 +1,25 @@
+name: Deploy Laravel to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.DO_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan 157.245.72.147 >> ~/.ssh/known_hosts
+
+    - name: Deploy code via SSH
+      run: |
+        ssh root@your_droplet_ip "cd /var/www/laravel && git pull origin main && composer install && php artisan migrate --force"
