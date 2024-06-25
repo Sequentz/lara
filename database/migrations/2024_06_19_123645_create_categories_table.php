@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('categories');
     }
 };
