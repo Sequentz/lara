@@ -9,7 +9,6 @@ use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProductRequest;
-use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -18,15 +17,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (auth()->check()) {
-            $userId = auth()->user()->id;
-            $products = Product::where('user_id', $userId)
-                ->paginate(10);
-            return view('products', compact('products'));
-        } else {
+        //     if (auth()->check()) {
+        //         $userId = auth()->user()->id;
+        //         $products = Product::where('user_id', $userId)
+        //             ->paginate(10);
+        //         return view('products', compact('products'));
+        //     } else {
 
-            return redirect()->route('login');
-        }
+        //         return redirect()->route('login');
+        //     }
+
+        $products = Product::paginate(10);
+        return view('products', compact('products'));
     }
 
     /**
@@ -50,6 +52,7 @@ class ProductController extends Controller
             $imagePath = $request->file('image')->store('products', 'public');
             $validated['image'] = $imagePath;
         }
+
         Product::create($validated);
 
         return redirect()->route('products')->with('success', 'Product created successfully!');
