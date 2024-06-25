@@ -17,9 +17,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->sortable()->paginate(10);
-
-        return view('products', compact('products'));
+        if (auth()->check()) {
+            $userId = auth()->user()->id;
+            $products = Product::with('category')->sortable()->paginate(10);
+            return view('products', compact('products'));
+        } else {
+            // Handle case where user is not authenticated
+            return redirect()->route('login');
+        }
     }
 
     /**
