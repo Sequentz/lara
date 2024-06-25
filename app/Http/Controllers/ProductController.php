@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -49,7 +50,6 @@ class ProductController extends Controller
             $imagePath = $request->file('image')->store('products', 'public');
             $validated['image'] = $imagePath;
         }
-
         Product::create($validated);
 
         return redirect()->route('products')->with('success', 'Product created successfully!');
