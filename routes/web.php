@@ -30,7 +30,7 @@ Route::middleware([
     })->name('dashboard');
 
     // PRODUCTS
-    Route::get('/products', [ProductController::class, 'index'])->name(('products'));
+    Route::middleware(['auth:sanctum', 'verified'])->get('/products', [ProductController::class, 'index'])->name(('products'));
 
     // ADD PRODUCT
     Route::get('/products/add', [ProductController::class, 'create'])->name(('products.create'));
