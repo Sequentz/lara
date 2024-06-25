@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ route('categories.create') }}" class="align-middle bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">Add Category</a>
+        <a href="{{ route('category.create') }}" class="align-middle bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">Add Category</a>
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Categories') }}
         </h2>
