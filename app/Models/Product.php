@@ -13,7 +13,7 @@ class Product extends Model
     public $sortable = ['id', 'product', 'brand', 'category_id', 'price'];
 
     protected $fillable = [
-        'product', 'description', 'brand_id', 'category_id', 'img', 'price',
+        'product', 'description', 'brand_id', 'category_id', 'img', 'price', 'user_id',
     ];
 
     public function category()

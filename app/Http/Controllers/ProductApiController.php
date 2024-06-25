@@ -23,24 +23,24 @@ class ProductApiController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $validated = $request->validated();
+        // $validated = $request->validated();
 
-        $product = new Product;
-        $product->name = $validated['name'];
-        $product->description = $validated['description'];
-        $product->price = $validated['price'];
-        $product->brand_id = $validated['brand_id'];
-        $product->category_id = $validated['category_id'];
-        $product->image = null;
+        // $product = new Product;
+        // $product->name = $validated['name'];
+        // $product->description = $validated['description'];
+        // $product->price = $validated['price'];
+        // $product->brand_id = $validated['brand_id'];
+        // $product->category_id = $validated['category_id'];
+        // $product->image = $validated['image'];
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-            $product->image = $imagePath;
-        }
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('products', 'public');
+        //     $product->image = $imagePath;
+        // }
 
-        $product->save();
+        // $product->save();
 
-        return new ProductResource($product);
+        // return new ProductResource($product);
     }
 
     /**
@@ -54,40 +54,40 @@ class ProductApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreProductRequest $request, Product $product)
-    {
-        $validated = $request->validated();
+    // public function update(StoreProductRequest $request, Product $product)
+    // {
+    //     $validated = $request->validated();
 
-        $product->name = $validated['name'];
-        $product->description = $validated['description'];
-        $product->price = $validated['price'];
-        $product->brand_id = $validated['brand_id'];
-        $product->category_id = $validated['category_id'];
+    //     $product->name = $validated['name'];
+    //     $product->description = $validated['description'];
+    //     $product->price = $validated['price'];
+    //     $product->brand_id = $validated['brand_id'];
+    //     $product->category_id = $validated['category_id'];
 
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-            $imagePath = $request->file('image')->store('products', 'public');
-            $product->image = $imagePath;
-        }
+    //     if ($request->hasFile('image')) {
+    //         if ($product->image) {
+    //             Storage::disk('public')->delete($product->image);
+    //         }
+    //         $imagePath = $request->file('image')->store('products', 'public');
+    //         $product->image = $imagePath;
+    //     }
 
-        $product->save();
+    //     $product->save();
 
-        return new ProductResource($product);
-    }
+    //     return new ProductResource($product);
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
     {
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
-        }
+        // if ($product->image) {
+        //     Storage::disk('public')->delete($product->image);
+        // }
 
-        $product->delete();
+        // $product->delete();
 
-        return response()->json(null, 204);
+        // return response()->json(null, 204);
     }
 }
