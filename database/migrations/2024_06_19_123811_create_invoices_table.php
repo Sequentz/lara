@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('state');
             $table->string('zip');
             $table->string('country');
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }
