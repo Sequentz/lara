@@ -77,8 +77,8 @@ Route::middleware([
     Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
     // ADD CATEGORY
-    Route::get('/categories/add', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categories/add', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/add', [CategoryController::class, 'create'])->name(('categories.create'));
+    Route::post('/categories/add', [CategoryController::class, 'store'])->name(('categories.store'));
 
     // EDIT CATEGORY
     Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');

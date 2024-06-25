@@ -14,6 +14,7 @@
                     <th class="px-6 py-3 text-left text-sm font-medium">@sortablelink('name', 'Name') <span class="inline-block ml-1">⬍</span></th>
                     <th class="px-6 py-3 text-left text-sm font-medium">Edit</th>
                     <th class="px-6 py-3 text-left text-sm font-medium">Delete</th>
+
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
