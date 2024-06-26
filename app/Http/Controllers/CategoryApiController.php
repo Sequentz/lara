@@ -13,7 +13,8 @@ class CategoryApiController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        $categories = Category::all();
+        return CategoryResource::collection($categories)->resolve();
     }
 
     /**

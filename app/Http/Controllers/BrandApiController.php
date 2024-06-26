@@ -13,7 +13,8 @@ class BrandApiController extends Controller
      */
     public function index()
     {
-        return BrandResource::collection(Brand::all());
+        $brands = Brand::all();
+        return BrandResource::collection($brands)->resolve();
     }
 
     /**

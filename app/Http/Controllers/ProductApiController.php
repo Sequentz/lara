@@ -15,7 +15,8 @@ class ProductApiController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        $products = Product::all();
+        return ProductResource::collection($products)->resolve();
     }
 
     /**
