@@ -4,39 +4,25 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class ProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
      * @return array<string, mixed>
      */
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
+
         return [
             'id' => $this->id,
-            'product' => $this->name,
+            'product' => $this->product,
             'description' => $this->description,
-            'image' => $this->getImageUrl(),
+            'image' => URL::to('/storage/' . $this->photo),
             'price' => $this->price,
-            'user_id' => $this->user_id,
-        ];
-    }
 
-    /**
-     * Get the URL of the product image.
-     *
-     * @return string|null
-     */
-    private function getImageUrl(): ?string
-    {
-        if ($this->photo) {
-            return Storage::url($this->photo);
-        }
-        return null;
+        ];
     }
 }

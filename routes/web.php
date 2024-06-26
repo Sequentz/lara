@@ -30,63 +30,44 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/dashboard', [JokeController::class, 'index'])->name('dashboard');
-
-
-    // PRODUCTS
+    // view
     Route::get('/products', [ProductController::class, 'index'])->name(('products'));
-
-    // ADD PRODUCT
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+    // add
     Route::get('/products/add', [ProductController::class, 'create'])->name(('products.create'));
     Route::post('/products/add', [ProductController::class, 'store'])->name(('products.store'));;
-
-    // EDIT PRODUCT
+    // edit
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name(('products.edit'));
     Route::put('/products/{product}/edit', [ProductController::class, 'update'])->name(('products.update'));
-
-    // VIEW PRODUCT 
-    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-
-    // DELETE PRODUCT
+    // delete
     Route::get('/product/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 
-    // BRANDS
+    // view
     Route::get('/brands', [BrandController::class, 'index'])->name(('brands'));
-
-    // ADD BRAND
+    // add
     Route::get('/brands/add', [BrandController::class, 'create'])->name(('brands.create'));
     Route::post('/brands/add', [BrandController::class, 'store'])->name(('brands.store'));
-
-
-    // EDIT BRAND
+    // edit
     Route::get('/brands/{id}/edit', [BrandController::class, 'edit'])->name(('brands.edit'));
     Route::put('/brands/{id}/edit', [BrandController::class, 'update'])->name(('brands.update'));
-
-
-    // DELETE BRAND
+    //delete
     Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
-    // Route::delete('/brands', [BrandController::class, 'destroy'])->name(('brands.destroy'));
 
 
-
-
-    // ORDERS
-    Route::get('/orders', [OrderController::class, 'index'])->name(('orders'));
-
-    // CATEGORIES
+    //view
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-
-    // VIEW CATEGORY
     Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-
-    // ADD CATEGORY
+    // add
     Route::get('/category/add', [CategoryController::class, 'create'])->name(('category.create'));
     Route::post('/categories/add', [CategoryController::class, 'store'])->name(('categories.store'));
-
-    // EDIT CATEGORY
+    // edit
     Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-
-    // DELETE CATEGORY
+    // delete
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+    // view
+    Route::get('/orders', [OrderController::class, 'index'])->name(('orders'));
 });

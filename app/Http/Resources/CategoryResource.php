@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class CategoryResource extends JsonResource
 {
@@ -18,7 +19,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'category' => $this->name,
             'description' => $this->description,
-            'image' => $this->image
+            'image' => URL::to('/storage/' . $this->photo),
         ];
     }
 }
