@@ -40,8 +40,10 @@ class CategoryController extends Controller
         $category->description = $validated['description'];
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('categories', 'public');
-            $category->image = $imagePath;
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('categories/images', $filename, 'public');
+            $category->image = $path;
         }
 
         $category->save();

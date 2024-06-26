@@ -21,11 +21,13 @@
 
             <div>
                 <label class="block text-lg font-medium text-gray-700">Category Image</label>
-                @if ($category->image)
-                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+
+                @if($category->image)
+                <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" class="w-22 h-22 object-cover">
                 @else
-                <p class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">No image available</p>
+                No image available
                 @endif
+
             </div>
         </div>
     </div>

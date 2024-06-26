@@ -28,7 +28,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $category->description }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         @if($category->image)
-                        <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="w-16 h-16 object-cover">
+                        <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" class="w-16 h-16 object-cover">
                         @else
                         No image available
                         @endif
