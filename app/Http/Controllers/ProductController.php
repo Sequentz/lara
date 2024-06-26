@@ -54,7 +54,6 @@ class ProductController extends Controller
         }
 
         Product::create($validated);
-
         return redirect()->route('products')->with('success', 'Product created successfully!');
     }
 

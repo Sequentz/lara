@@ -17,7 +17,7 @@
     <div class="text-center">
         <h1 class="text-6xl font-bold text-gray-900 mb-4">404</h1>
         <p class="text-2xl text-gray-800 mb-8">Oops! Looks like you wandered into the wrong neighborhood.</p>
-
+        <a href="/" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">Go Home</a>
     </div>
 </body>
 
