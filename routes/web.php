@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\JokeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +29,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/dashboard', [JokeController::class, 'index'])->name('dashboard');
+
 
     // PRODUCTS
-    Route::middleware(['auth:sanctum', 'verified'])->get('/products', [ProductController::class, 'index'])->name(('products'));
+    Route::get('/products', [ProductController::class, 'index'])->name(('products'));
 
     // ADD PRODUCT
     Route::get('/products/add', [ProductController::class, 'create'])->name(('products.create'));
