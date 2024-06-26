@@ -13,16 +13,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
 
     // products
-    Route::get('/products', [ProductApiController::class, 'index']);
-    Route::get('/products/{product}', [ProductApiController::class, 'show']);
+    // Route::get('/products', [ProductApiController::class, 'index']);
+    // Route::get('/products/{product}', [ProductApiController::class, 'show']);
 
-    // brands
-    Route::get('/brands', [BrandApiController::class, 'index']);
-    Route::get('/brands/{brand}', [BrandApiController::class, 'show']);
-    Route::get('/brands/{name}/products', [BrandApiController::class, 'getProductsByBrand']);
+    // // brands
+    // Route::get('/brands', [BrandApiController::class, 'index']);
+    // Route::get('/brands/{brand}', [BrandApiController::class, 'show']);
+    // Route::get('/brands/{name}/products', [BrandApiController::class, 'getProductsByBrand']);
 
-    // categories
-    Route::get('/categories', [CategoryApiController::class, 'index']);
-    Route::get('/categories/{category}', [CategoryApiController::class, 'show']);
-    Route::get('/categories/{name}/products', [BrandApiController::class, 'getProductsByCategory']);
+    // // categories
+    // Route::get('/categories', [CategoryApiController::class, 'index']);
+    // Route::get('/categories/{category}', [CategoryApiController::class, 'show']);
+    // Route::get('/categories/{name}/products', [BrandApiController::class, 'getProductsByCategory']);
 });
+Route::get('/products', [ProductApiController::class, 'index']);
+Route::get('/products/{product}', [ProductApiController::class, 'show']);
+
+// brands
+Route::get('/brands', [BrandApiController::class, 'index']);
+Route::get('/brands/{brand}', [BrandApiController::class, 'show']);
+Route::get('/brands/{name}/products', [BrandApiController::class, 'getProductsByBrand']);
+
+// categories
+Route::get('/categories', [CategoryApiController::class, 'index']);
+Route::get('/categories/{category}', [CategoryApiController::class, 'show']);
+Route::get('/categories/{name}/products', [BrandApiController::class, 'getProductsByCategory']);
