@@ -20,8 +20,8 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'product' => $this->product,
             'description' => $this->description,
-            'image' => URL::to('/storage/' . $this->photo),
             'price' => $this->price,
+            'image' => $this->image,
 
         ];
     }
