@@ -19,7 +19,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'category' => $this->name,
             'description' => $this->description,
-            'image' => $this->image ? URL::to('/storage/' . $this->image) : null,
+            'image' => $this->image
         ];
     }
 }
