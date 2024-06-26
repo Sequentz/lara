@@ -34,7 +34,7 @@ Route::middleware([
     Route::get('/products', [ProductController::class, 'index'])->name(('products'));
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
     // add
-    Route::get('/products/add', [ProductController::class, 'create'])->name(('products.create'));
+    Route::get('/product/add', [ProductController::class, 'create'])->name(('products.create'));
     Route::post('/products/add', [ProductController::class, 'store'])->name(('products.store'));;
     // edit
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name(('products.edit'));
