@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 'product' => $faker->word,
                 'description' => $faker->sentence,
-                'image' => 'products/default.jpg', // Use a default image for simplicity
+                'image' => 'products/default.jpg',
                 'price' => $faker->randomFloat(2, 10, 1000),
                 'inventory' => $faker->numberBetween(1, 100),
                 'category_id' => $faker->randomElement($categories),

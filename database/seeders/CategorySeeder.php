@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
             DB::table('categories')->insert([
                 'name' => $faker->word,
                 'description' => $faker->sentence,
-                'image' => 'categories/default.jpg', // Use a default image for simplicity
+                'image' => 'categories/default.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

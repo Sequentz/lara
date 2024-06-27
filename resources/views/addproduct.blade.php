@@ -118,13 +118,11 @@
                 select.add(option);
                 select.value = category.id;
 
-                // Close the modal
                 document.getElementById('category-modal').classList.add('hidden');
 
-                // Reset the form
                 this.reset();
             } else {
-                // Handle error response
+
                 console.error('Error adding category:', response.statusText);
             }
         });
